@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Donate - Helping Hearts Charity</title>
+
+```
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet">
+
+<style>
+.card{
+    border-radius:20px;
+}
+
+.alert{
+    border-radius:15px;
+}
+
+    body{
+        background:#f8f9fa;
+    }
+
+    .donate-hero{
+        height:50vh;
+
+        background:
+        linear-gradient(
+            rgba(0,0,0,0.6),
+            rgba(0,0,0,0.6)
+        ),
+        url("/static/images/donate-bg.jpg");
+
+        background-size:cover;
+        background-position:center;
+
+        display:flex;
+        justify-content:center;
+        align-items:center;
+
+        text-align:center;
+        color:white;
+    }
+
+    .donation-card{
+        border:none;
+        border-radius:20px;
+        overflow:hidden;
+    }
+
+    .form-control,
+    .form-select{
+        padding:12px;
+    }
+
+    .amount-btn{
+        font-weight:bold;
+    }
+
+</style>
+```
+
+</head>
+<body>
+
+<section class="donate-hero">
+
+```
+<div>
+
+    <h1 class="display-4 fw-bold">
+        Make a Difference Today ❤️
+    </h1>
+
+    <p class="lead">
+        Your generosity helps transform lives and build stronger communities.
+    </p>
+
+</div>
+```
+
+</section>
+
+<div class="container py-5">
+
+```
+<div class="row justify-content-center">
+
+    <div class="col-lg-8">
+
+        <div class="card donation-card shadow-lg">
+
+            <div class="card-body p-5">
+
+                <h2 class="text-center text-success mb-4">
+                    Donate Now
+                </h2>
+
+                <form method="POST">
+
+                    <label class="form-label">
+                        Select Project
+                    </label>
+
+                    <select name="project_id"
+                            class="form-select mb-3"
+                            required>
+
+                        <option value="">
+                            Choose a Project
+                        </option>
+
+                        {% for project in projects %}
+
+                        <option value="{{ project.id }}">
+                            {{ project.title }}
+                        </option>
+
+                        {% endfor %}
+
+                    </select>
+
+                    <label class="form-label">
+                        Full Name
+                    </label>
+
+                    <input type="text"
+                           name="name"
+                           class="form-control mb-3"
+                           placeholder="Enter your full name"
+                           required>
+
+                    <label class="form-label">
+                        Email Address
+                    </label>
+
+                    <input type="email"
+                           name="email"
+                           class="form-control mb-3"
+                           placeholder="Enter your email"
+                           required>
+
+                    <label class="form-label">
+                        Donation Amount (KES)
+                    </label>
+
+                    <div class="row mb-3">
+
+                        <div class="col-3">
+                            <button type="button"
+                                    class="btn btn-outline-success w-100 amount-btn"
+                                    onclick="setAmount(100)">
+                                100
+                            </button>
+                        </div>
+
+                        <div class="col-3">
+                            <button type="button"
+                                    class="btn btn-outline-success w-100 amount-btn"
+                                    onclick="setAmount(500)">
+                                500
+                            </button>
+                        </div>
+
+                        <div class="col-3">
+                            <button type="button"
+                                    class="btn btn-outline-success w-100 amount-btn"
+                                    onclick="setAmount(1000)">
+                                1000
+                            </button>
+                        </div>
+
+                        <div class="col-3">
+                            <button type="button"
+                                    class="btn btn-warning w-100 amount-btn"
+                                    onclick="setAmount(5000)">
+                                5000
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <input type="number"
+                           id="amount"
+                           name="amount"
+                           class="form-control mb-4"
+                           placeholder="Enter custom amount"
+                           required>
+
+                    <button type="submit"
+                            class="btn btn-success btn-lg w-100">
+
+                        Donate Securely ❤️
+
+                    </button>
+
+                </form>
+<hr class="my-5">
+
+<div class="card border-0 shadow-sm bg-light">
+
+```
+<div class="card-body text-center p-4">
+
+    <h3 class="text-success fw-bold">
+        📱 Donate via M-Pesa
+    </h3>
+
+    <p class="text-muted">
+        Support our mission quickly and securely using M-Pesa.
+    </p>
+
+    <div class="row mt-4">
+
+        <div class="col-md-4">
+
+            <h6 class="fw-bold">
+                Step 1
+            </h6>
+
+            <p>
+                Open the M-Pesa Menu
+            </p>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <h6 class="fw-bold">
+                Step 2
+            </h6>
+
+            <p>
+                Send Money to:
+                <br>
+                <span class="text-success fw-bold fs-5">
+                    0726251278
+                </span>
+            </p>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <h6 class="fw-bold">
+                Step 3
+            </h6>
+
+            <p>
+                Complete payment and keep the confirmation message.
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="alert alert-success mt-3">
+
+        <strong>Thank You!</strong><br>
+
+        Your donation helps provide food, education, healthcare,
+        and community support to those in need.
+
+    </div>
+
+</div>
+```
+
+</div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+```
+
+</div>
+
+<script>
+
+function setAmount(value)
+{
+    document.getElementById("amount").value = value;
+}
+
+</script>
+
+</body>
+</html>
