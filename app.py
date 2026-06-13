@@ -10,15 +10,16 @@ app.config["MAIL_SERVER"] = "smtp.gmail.com"
 app.config["MAIL_PORT"] = 587
 app.config["MAIL_USE_TLS"] = True
 app.config["MAIL_USERNAME"] = "giftmaliatso@gmail.com"
-app.config["MAIL_PASSWORD"] = "yifh lsfj gukp plnz"
+import os
+
+app.config["MAIL_PASSWORD"] = os.environ.get("MAIL_PASSWORD")
 app.config["MAIL_DEFAULT_SENDER"] = "giftmaliatso@gmail.com"
 
 mail = Mail(app)
 
 app.secret_key = "FaithAliveSecret2026"
 
-app.config["SQLALCHEMY_DATABASE_URI"] = \
-    "mysql+pymysql://root:FaithAlive7@localhost/charity_db"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///charity.db"
 
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
@@ -306,6 +307,9 @@ def test_email():
     mail.send(msg)
 
     return "Email Sent!"
+
+with app.app_context():
+    db.create_all()
 
 if __name__ == "__main__":
     app.run(debug=True)
